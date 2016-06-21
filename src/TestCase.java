@@ -121,12 +121,16 @@ public class TestCase {
 	}
 
 	public static void main(String[] args) throws Exception {
-		TestCase tc = new TestCase();
-
-		tc.setUpSource();
-		tc.setUpMixingMatrix();
-		tc.testFastICA();
-		tc.plotResults();
+//		TestCase tc = new TestCase();
+//
+//		tc.setUpSource();
+//		tc.setUpMixingMatrix();
+//		tc.testFastICA();
+//		tc.plotResults();
+		
+		ImageTestCase itc = new ImageTestCase();
+		itc.run();
+		
 		System.out.println("Test done.");
 	}
 }
