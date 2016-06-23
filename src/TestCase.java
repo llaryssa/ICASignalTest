@@ -50,7 +50,7 @@ public class TestCase {
 
 	}
 
-	// only works for 2x2 matrices
+	// Works only w/ 2x2 matrices
 	public double[][] inverse(double[][] A) {
 		double[][] result = new double[2][2];
 		double det = A[0][0]*A[1][1] - A[0][1]*A[1][0];
@@ -100,34 +100,26 @@ public class TestCase {
 		FastICA ica = new FastICA(X, 2);
 		mix = ica.getMixingMatrix();
 		sep = ica.getSeparatingMatrix();
-
-//		String folder = "/Users/llaryssa/Documents/Loyola/NeuroscienceApp/AnneGithub/NeuralEfficientCodingApp/ICATestCase/out/";
-//
-//		PrintWriter p1 =  new PrintWriter(folder+"source.txt", "UTF-8");
-//		p1.print(Matrix.toString(source));
-//		p1.close();
-//
-//		PrintWriter p2 =  new PrintWriter(folder+"mixing.txt", "UTF-8");
-//		p2.print(Matrix.toString(mixing));
-//		p2.close();
-//
-//		PrintWriter p3 =  new PrintWriter(folder+"icamixing.txt", "UTF-8");
-//		p3.print(Matrix.toString(mix));
-//		p3.close();
-//
-//		PrintWriter p5 =  new PrintWriter(folder+"x.txt", "UTF-8");
-//		p5.print(Matrix.toString(Matrix.transpose(X)));
-//		p5.close();	
 	}
 
 	public static void main(String[] args) throws Exception {
+		
+		// For signal testing, the output is 2 plots
+		// One of them is the original sources, and the other is the recovered signal
+		// The test contain a little noise, so if the algorithm is good, it should return
+		// good recovered signals.
+		// For the test with images, the returned images are the ICA components
+		// To be a good result, they should look like Gabor Filters.
+		
+//		// Uncomment this part to test ICA with signals (sine wave and sawtooth)
 //		TestCase tc = new TestCase();
 //
 //		tc.setUpSource();
 //		tc.setUpMixingMatrix();
 //		tc.testFastICA();
 //		tc.plotResults();
-		
+	
+		// Uncomment this part to test ICA with the grasshopper image
 		ImageTestCase itc = new ImageTestCase();
 		itc.run();
 		

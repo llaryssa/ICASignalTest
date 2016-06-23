@@ -27,9 +27,6 @@ import org.ejml.simple.SimpleMatrix;
 import org.fastica.*;
 import org.fastica.math.Matrix;
 
-//import fastica1.FastICA;
-//import fastica1.PrincipalComponentAnalysis;
-
 public class ImageTestCase {
 
 	static double[][] toMatrix (SimpleMatrix A) {
@@ -70,24 +67,6 @@ public class ImageTestCase {
 			picked.add(p);
 		}
 		return picked;
-	}
-
-	private static void saveToFile(double[][] image_patches, String filename) {
-		PrintWriter writer;
-		try {
-			writer = new PrintWriter(filename);
-			for (int i = 0; i < image_patches.length; i++) {
-				for (int j = 0; j < image_patches[0].length; j++) {
-					writer.print(image_patches[i][j] + " ");
-				}
-				writer.println();
-			}
-			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	public static double calculateStd(SimpleMatrix window) {
@@ -144,18 +123,12 @@ public class ImageTestCase {
 		return (new double[] {min, max});
 	}
 
-	class MyFrame extends JFrame {
-		public MyFrame(BufferedImage images[]) {
-			JTabbedPane tabbed= new JTabbedPane();
-			setContentPane(tabbed);
-			for(int i=0;i< images.length;++i)
-				tabbed.addTab("Image "+i, new JScrollPane(new JLabel(new ImageIcon(images[i]))));
-		}}	
-
+	
 	
 	// MAIN
 	public void run() throws Exception {
 
+		// This image contains the rgb (0-255) values of grasshopper image generated in matlab
 		File file = new File("img.txt");
 
 		Scanner scanner = new Scanner(file);
@@ -205,6 +178,7 @@ public class ImageTestCase {
 			}
 		}		
 
+		
 		// This is ICA
 		int ica_comp = 40; // components we want to use
 		double[][] X = toMatrix(image_patches);
